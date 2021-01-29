@@ -1,0 +1,76 @@
+\usepackage{luacode}
+\usepackage{babel}
+\usepackage{microtype}
+\usepackage{fontspec}
+\usepackage{geometry}
+\usepackage{mathtools}
+\usepackage[math-style=french,warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
+\setmainfont{TeX Gyre Termes}
+\setmathfont{XITS Math}
+%\setmathfont[range=bb]{Latin Modern Math}
+\setmathfont[range={scr,cal}]{TeX Gyre Pagella Math}
+\usepackage[amsmath,thmmarks,hyperref]{ntheorem}
+\usepackage[most]{tcolorbox}
+\usepackage{xparse,xpatch}
+\usepackage{tikz}
+\usepackage{caption}
+\usetikzlibrary{calc,trees,positioning,arrows,fit,shapes,calc}
+\usepackage{lualatex-math}
+\usepackage[unicode,naturalnames]{hyperref}
+\usepackage{cleveref}
+\AtBeginDocument{\let\savedemptyset\emptyset} % 
+\AtBeginDocument{\let\emptyset\varnothing} % 
+\AtBeginDocument{\let\savedleq\leq} % 
+\AtBeginDocument{\let\savedgeq\geq} %
+\AtBeginDocument{\let\leq\leqslant} % 
+\AtBeginDocument{\let\geq\geqslant} %
+\newcommand{\paral}{\mathrel{\!/\mkern-5mu/\!}} % \parallel existe déjà : || vs //
+\makeatletter
+\newcommand*{\theauthor}{\@author}
+\newcommand*{\thetitle}{\@title}
+\newcommand*{\thedate}{\@date}
+\renewcommand{\xmapsto}[2][]{\mathrel{\mathpalette\xmapsto@{{#1}{#2}}}}
+\newcommand{\xmapsto@}[2]{\xmapsto@@{#1}#2}
+\newcommand{\xmapsto@@}[3]{%
+  \begingroup
+  \sbox\z@{$\m@th#1\mathop{}\limits_{\;#2\;}^{\;#3\;}$}%
+  \mathop{\Uhextensible width \wd\z@ 0 "27FC}_{#2}^{#3}%
+  \endgroup
+}
+\newcounter{proofpart}
+\newcommand{\proofpart}{\@ifstar{\@proofpart}{\@@proofpart}}
+
+\newcommand{\@proofpart}[1]{%
+  \if\detokenize{#1}\relax\else{
+  \par
+  \addvspace{\medskipamount}%
+  \noindent \itshape%
+  {#1~:\par\nobreak\smallskip}%
+  \normalfont
+  \@afterheading
+}
+}
+
+\newcommand{\@@proofpart}[1]{%
+  \par
+  \addvspace{\medskipamount}%
+  \stepcounter{proofpart}%
+  \noindent Partie \theproofpart~:~\itshape%
+  \if\detokenize{#1}\relax%
+  \else{#1.}\fi%
+  \par\nobreak\smallskip
+  \normalfont
+  \@afterheading
+}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%            NUMEROTATION (CLASSE MEMOIR)       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setsecnumdepth{subsubsection}
+\renewcommand{\cftpartaftersnum}{.}
+\renewcommand{\cftchapteraftersnum}{.}
+\renewcommand{\cftpartdotsep}{\cftdotsep}
+\renewcommand{\cftchapterdotsep}{\cftdotsep}% Chapters should use dots in ToC
+\aliaspagestyle{title}{empty} 
+\aliaspagestyle{part}{empty} 
+\setlength\headheight{\dimexpr \headheight+0.20004pt}

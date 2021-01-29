@@ -1,0 +1,43 @@
+\documentclass[a4paper,french,final]{memoir}
+\input{backend_code/preambule}
+\input{backend_code/bibliographie}
+\input{personalisation}
+\begin{document}
+\begin{titlingpage}
+\input{backend_code/page_de_garde}
+\end{titlingpage}
+
+\frontmatter
+\tableofcontents
+\mainmatter
+\part{Introduction}
+bla bla
+\backmatter
+\nocite{*}
+\printbibliography
+\appendix
+\chapter{manuel des commandes}
+\begin{theoremb}{Exemple}{exem}
+\(\alpha\beta\gamma ABCD=\)
+\end{theoremb}
+\begin{remarkb}{Remarque}{rema}
+\(a\)
+\end{remarkb}
+\begin{noteb}{Note}{not}
+$a$
+\end{noteb}
+\begin{defb}{Définition}{def}
+$a$
+\end{defb}
+\begin{proof}
+\makeatletter
+\proofpart{test}
+\[TRUC\]
+\proofpart{}
+\[MACHIN\]
+\proofpart*{test}
+\[BIDULE\]
+\end{proof}
+\Cref{thm-exem}, \cref{rem-rema}, \cref{note-not} \cref{def-def} 
+\deffunct{f}{E}{F}{x}{f(x)}
+\end{document}

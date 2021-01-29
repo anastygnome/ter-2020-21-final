@@ -1,0 +1,88 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   THEOREMES SANS BOITES   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{break}
+\theoremseparator{~:} % espace fine insécable avant le :
+\newtheorem{lemma}{Lemme}
+\newtheorem{corollary}{Corollaire}
+\newtheorem{definition}{Définition}
+\theoremstyle{plain}
+\newtheorem*{question}{Question}
+\newtheorem*{answer}{Réponse}
+\newtheorem{remark}{Remarque}
+\theoremsymbol{\text{\bsc{c.q.f.d}}} % mod
+\theorembodyfont{\normalfont}
+\theoremprework{\setcounter{proofpart}{0}}
+\newtheorem*{proof}{Démonstration}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%            COULEURS       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{vert}{RGB}{0,181,0}
+\definecolor{oran}{RGB}{223,74,0}
+\definecolor{viol}{RGB}{134,0,175}
+\definecolor{roug}{RGB}{215,15,0}
+\definecolor{bleu}{RGB}{0,104,180}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   BOITES POUR THEOREMES   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tcbset{separator sign={},
+        description delimiters parenthesis,
+        label separator=-,
+styletheorem/.style={enhanced,
+  coltitle=black,
+  colback=white,
+  fonttitle=\bfseries,
+  boxrule=\fboxrule,
+  boxed title style={boxrule=\fboxrule},
+  attach boxed title to top left={yshift=-2mm, xshift=2mm},
+    }%
+}
+\newtcbtheorem[auto counter, number within = section]
+{theoremb}{Théorème}{styletheorem,colframe=roug,
+colback=white!90!roug,colbacktitle=white!80!roug,label type=theorem}{thm}
+\newtcbtheorem[auto counter, number within = section]
+{remarkb}{Remarque}{styletheorem,colframe=oran,
+colbacktitle=white!80!oran,colback=white!90!oran,label type=remark}{rem}
+\newtcbtheorem[auto counter, number within = section]
+{defb}{Définition}{styletheorem,colframe=bleu,
+colbacktitle=white!80!bleu,colback=white!90!bleu,label type=definition}{def}
+\newtcbtheorem[auto counter, number within = section]
+{noteb}{Commentaire}{styletheorem,colframe=vert,
+colbacktitle=white!80!vert,colback=white!90!vert,label type=note}{note}
+% le label type fait automatiquement la jonction avec cleveref pour nommer les théorèmes : le dernier groupe (thm,rem,def) permet de créer des labels automatiquement. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  SEPARATEUR (DANS LES PREUVES) : \proofpart   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% une  commande est définie pour séparer les preuves en deux variantes : avec et sans étoiles. (\proofpart et \proofpart*)
+% Par défaut, elle crée des sous parties dans un environement de démonstration sous la forme 
+% " Partie n : [titre en italique]. ", où n est un entier naturel strictement positif. Dans le cas ou le titre est vide, le point (.) n'est pas ajouté. Si le titre est vide, il faut utiliser \proofpart{}
+% Avec une étoile, on obtient 
+%[titre en italique : ] 
+
+
+
+\newcommand{\deffunct}[5]{%
+\begin{align*}%
+      #1 \colon & #2 \to #3\\
+       &#4\xmapsto{\hphantom{#1}} #5
+\end{align*}%
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   PAGE DE GARDE            %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\HRule}{\rule{\paperwidth}{0.5mm}} % trait, régler eppaisseur
+\newcommand*{\theuniversity}{\'Etablissement}
+\newcommand*{\theyearname}{formation, $n$\ieme~année}
+\newcommand*{\thesupervisor}{superviseur}
+
+\author{Prénom \bsc{Nom}~\&~Prénom \bsc{Nom}}
+\date{date}
+\title{GRAND TITRE\par
+            MACHIN : \par TRUC \par}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Opérateurs (dans le style de max etc.   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareMathOperator{\Card}{Card} % s'utilise avec \Card en mode maths
