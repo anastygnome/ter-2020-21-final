@@ -1,0 +1,49 @@
+% Copyright (C) 2021 Tom Domenge
+
+%This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+%This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+%You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,french,final]{memoir}
+\input{backend_code/preambule}
+\input{backend_code/bibliographie}
+\input{personalisation}
+\begin{document}
+\begin{titlingpage}
+\input{backend_code/page_de_garde}
+\end{titlingpage}
+
+\frontmatter
+\tableofcontents
+\mainmatter
+\part{Introduction}
+bla bla
+\nocite{*}\printbibliography
+\appendix \renewcommand{\thechapter}{\arabic{chapter}}
+\chapter{manuel des commandes}
+\begin{theoremb}{Exemple}{exem}
+\(\alpha\beta\gamma ABCD=\)
+\end{theoremb}
+\begin{remarkb}{Remarque}{rema}
+\(a\)
+\end{remarkb}
+\begin{noteb}{Note}{not}
+$a$
+\end{noteb}
+\begin{defb}{Définition}{def}
+$a$
+\end{defb}
+\begin{proof}
+\makeatletter
+\proofpart{test}
+\[TRUC\]
+\proofpart{}
+\[MACHIN\]
+\proofpart*{test}
+\[BIDULE\]
+\end{proof}
+\Cref{thm-exem}, \cref{rem-rema}, \cref{note-not} \cref{def-def} 
+\deffunct{f}{E}{F}{x}{f(x)}
+\end{document}
