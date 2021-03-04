@@ -47,6 +47,14 @@
   \mathop{\Uhextensible width \wd\z@ 0 "27FC}_{#2}^{#3}%
   \endgroup
 }
+\renewcommand{\xLeftrightarrow}[2][]{\mathrel{\mathpalette\xLeftrightarrow@{{#1}{#2}}}}
+\newcommand{\xmapsto@}[2]{\xLeftrightarrow@@{#1}#2}
+\newcommand{\xLeftrightarrow@@}[3]{%
+  \begingroup
+  \sbox\z@{$\m@th#1\mathop{}\limits_{\;#2\;}^{\;#3\;}$}%
+  \mathop{\Uhextensible width \wd\z@ 0 "27FA}_{#2}^{#3}%
+  \endgroup
+}
 \newcounter{proofpart}
 \newcommand{\proofpart}{\@ifstar{\@proofpart}{\@@proofpart}}
 
